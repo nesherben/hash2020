@@ -11,7 +11,7 @@ public class Main {
         ArrayList<Libreria> librerias = new ArrayList<>();
         ArrayList<Integer> scores = new ArrayList<>();
         /********ENTRADA DE DATOS********/
-        Scanner sc = new Scanner(new File("D:/Desktop/hash2020/b_read_on.txt"));
+        Scanner sc = new Scanner(new File("D:/Desktop/hash2020/a_example.txt"));
         //while (sc.hasNextLine()){
             b = sc.nextInt(); //Primera línea
             l = sc.nextInt();
@@ -42,6 +42,7 @@ public class Main {
             float ratio = librerias.get(i).ratio(scores);
             ratios.put(i, ratio);
             copiaRatios.add(ratio);
+
         }
 
         Collections.sort(copiaRatios, Collections.reverseOrder());
@@ -52,6 +53,7 @@ public class Main {
                 IDsOrdenados.add(j);
                 ratios.remove(j);
                 i++;
+
                 j = 0;
             } else j++;
         }

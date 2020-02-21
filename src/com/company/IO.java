@@ -9,7 +9,7 @@ public class IO {
 
     public ArrayList<String> Input(char problema) throws IOException {
         int i = 0;
-        Reader in = new FileReader(".txt");
+        Reader in = new FileReader("D:/Desktop/hash2020/a_example.txt");
         Reader br = new BufferedReader(in);
         ArrayList<String> sol = new ArrayList<>();
         String linea;
@@ -35,8 +35,10 @@ public class IO {
             printWriter.println(idActual + " " + numLibros);
             for(int j = 0; j < numLibros; j++){
                 printWriter.print(librerias.get(idActual).getLibros().get(j) + " ");
+
             }
             printWriter.println();
         }
+        printWriter.close();
     }
 }
