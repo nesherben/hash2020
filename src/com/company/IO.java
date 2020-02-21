@@ -7,20 +7,7 @@ import java.util.HashSet;
 
 public class IO {
 
-    public ArrayList<String> Input(char problema) throws IOException {
-        int i = 0;
-        Reader in = new FileReader("D:/Desktop/hash2020/a_example.txt");
-        Reader br = new BufferedReader(in);
-        ArrayList<String> sol = new ArrayList<>();
-        String linea;
-        while((linea = ((BufferedReader) br).readLine())!=null) {
-            sol.add(linea);
-            i++;
-        }
-        return sol;
-    }
-
-    public void Output(String problema, ArrayList<Libreria> librerias, ArrayList<Integer> IDordenados) throws FileNotFoundException {
+    public void output(String problema, ArrayList<Libreria> librerias, ArrayList<Integer> IDordenados) throws FileNotFoundException {
         PrintWriter printWriter = new PrintWriter(problema + ".txt");
         //ArrayList<String> solucion = new ArrayList<>();
 

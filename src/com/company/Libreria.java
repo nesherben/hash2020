@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class Libreria {
     private int ID;
-    private ArrayList<Integer> libros = new ArrayList<>();
+    private ArrayList<Integer> libros;
     private int signup;
     private int ship;
 

@@ -67,6 +67,6 @@ public class Main {
         //calculas como irá el programa y lo metes en salida
 
         /********SALIDA********/
-	    io.Output(problema, librerias, IDsOrdenados);
+	    io.output(problema, librerias, IDsOrdenados);
     }
 }
