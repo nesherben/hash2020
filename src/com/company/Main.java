@@ -12,27 +12,25 @@ public class Main {
         ArrayList<Integer> scores = new ArrayList<>();
         /********ENTRADA DE DATOS********/
         Scanner sc = new Scanner(new File("./inputs/a_example.txt"));
-        //while (sc.hasNextLine()){
-            b = sc.nextInt(); //Primera línea
-            l = sc.nextInt();
-            d = sc.nextInt();
+        b = sc.nextInt(); //Primera línea
+        l = sc.nextInt();
+        d = sc.nextInt();
+        sc.nextLine();
+        for (int i = 0; i < b; i++) scores.add(sc.nextInt()); //Segunda línea
+        sc.nextLine();
+        for (int i = 0; i < l; i++) { //Cargar librerías
+            ArrayList<Integer> libros = new ArrayList<>();
+            int numLibros = sc.nextInt();
+            int process = sc.nextInt();
+            int ship = sc.nextInt();
             sc.nextLine();
-            for (int i = 0; i < b; i++) scores.add(sc.nextInt()); //Segunda línea
-            sc.nextLine();
-            for (int i = 0; i < l; i++) { //Cargar librerías
-                ArrayList<Integer> libros = new ArrayList<>();
-                int numLibros = sc.nextInt();
-                int process = sc.nextInt();
-                int ship = sc.nextInt();
-                sc.nextLine();
-                for (int j = 0; j < numLibros; j++){
-                    int libro = sc.nextInt();
-                    if (!libros.contains(libro)) libros.add(libro);
-                }
-                sc.nextLine();
-                librerias.add(new Libreria(i, libros, process, ship));
+            for (int j = 0; j < numLibros; j++){
+                int libro = sc.nextInt();
+                if (!libros.contains(libro)) libros.add(libro);
             }
-        //}
+            sc.nextLine();
+            librerias.add(new Libreria(i, libros, process, ship, scores));
+        }
 
         /********CÓDIGO********/
         HashMap<Integer, Float> ratios = new HashMap<>();
@@ -42,7 +40,6 @@ public class Main {
             float ratio = librerias.get(i).ratio(scores);
             ratios.put(i, ratio);
             copiaRatios.add(ratio);
-
         }
 
         Collections.sort(copiaRatios, Collections.reverseOrder());
