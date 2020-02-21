@@ -57,9 +57,21 @@ public class Main {
 
         //cargarte los libros que ya hay en ratios más altos
 
-        //for(int i = 0; i < l; i++){
+        ArrayList<Integer> librosUnicos = new ArrayList<>();
+        librosUnicos.addAll(librerias.get(IDsOrdenados.get(0)).getLibros());
 
-        //}
+        for(int x = 1; x < l; x++){
+            int libroX = IDsOrdenados.get(x);
+            for(int y = 0; y < librerias.get(libroX).getLibros().size(); y++) {
+                if(librosUnicos.contains(librerias.get(libroX).getLibros().get(y))){
+                    librerias.get(libroX).getLibros().remove(y);
+                } else {
+                    librosUnicos.add(librerias.get(libroX).getLibros().get(y));
+                }
+
+            }
+            
+        }
 
         //calculas como irá el programa y lo metes en salida
 
