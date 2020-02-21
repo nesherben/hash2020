@@ -13,10 +13,10 @@ public class Libreria{
         return libros;
     }
 
-    public Libreria(int ID, ArrayList<Integer> libros, int signup, int ship, ArrayList<Integer> scores) {
+    public Libreria(int ID, ArrayList<Integer> libros, int signup, int ship) {
         Comparador c = new Comparador();
         this.ID = ID;
-        this.libros = c.compareTo(libros, scores);
+        this.libros = libros;
         this.signup = signup;
         this.ship = ship;
     }
@@ -28,5 +28,9 @@ public class Libreria{
             puntuacion += scores.get(this.libros.get(i));
         librosPorDia = this.libros.size() / this.ship;
         return puntuacion / (signup + librosPorDia);
+    }
+
+    public void ordenarLibros(ArrayList<Integer> scores){
+        this.libros = new Comparador().compareTo(this.libros, scores);
     }
 }

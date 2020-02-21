@@ -29,10 +29,12 @@ public class Main {
                 if (!libros.contains(libro)) libros.add(libro);
             }
             sc.nextLine();
-            librerias.add(new Libreria(i, libros, process, ship, scores));
+            librerias.add(new Libreria(i, libros, process, ship));
         }
 
         /********CÓDIGO********/
+        for (Libreria lib : librerias) lib.ordenarLibros(scores); //Ordena todas las librerías
+
         HashMap<Integer, Float> ratios = new HashMap<>();
         ArrayList<Float> copiaRatios = new ArrayList<>();
         ArrayList<Integer> IDsOrdenados = new ArrayList<>();
