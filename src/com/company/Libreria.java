@@ -2,6 +2,7 @@ package com.company;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashSet;
 
 public class Libreria{
     private int ID;
@@ -13,10 +14,10 @@ public class Libreria{
         return libros;
     }
 
-    public Libreria(int ID, ArrayList<Integer> libros, int signup, int ship) {
+    public Libreria(int ID, HashSet<Integer> libros, int signup, int ship, ArrayList<Integer> scores) {
         Comparador c = new Comparador();
         this.ID = ID;
-        this.libros = libros;
+        this.libros = c.compareTo(libros, scores);
         this.signup = signup;
         this.ship = ship;
     }
@@ -30,7 +31,7 @@ public class Libreria{
         return puntuacion / (signup + librosPorDia);
     }
 
-    public void ordenarLibros(ArrayList<Integer> scores){
+    /*public void ordenarLibros(ArrayList<Integer> scores){
         this.libros = new Comparador().compareTo(this.libros, scores);
-    }
+    }*/
 }

@@ -3,6 +3,7 @@ package com.company;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.HashSet;
 
 public class Comparador {
 
@@ -25,7 +26,7 @@ public class Comparador {
         }
     }
 
-    public ArrayList<Integer> compareTo(ArrayList<Integer> desordenados, ArrayList<Integer> scores) {
+    public ArrayList<Integer> compareTo(HashSet<Integer> desordenados, ArrayList<Integer> scores) {
         ArrayList<Libro> orden = new ArrayList<Libro>();
         for (int i = 0; i < scores.size(); i++){
             Libro l = new Libro(i, scores.get(i));

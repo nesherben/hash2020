@@ -19,21 +19,21 @@ public class Main {
         for (int i = 0; i < b; i++) scores.add(sc.nextInt()); //Segunda línea
         sc.nextLine();
         for (int i = 0; i < l; i++) { //Cargar librerías
-            ArrayList<Integer> libros = new ArrayList<>();
+            HashSet<Integer> libros = new HashSet<>();
             int numLibros = sc.nextInt();
             int process = sc.nextInt();
             int ship = sc.nextInt();
             sc.nextLine();
             for (int j = 0; j < numLibros; j++){
                 int libro = sc.nextInt();
-                if (!libros.contains(libro)) libros.add(libro);
+                libros.add(libro);
             }
             sc.nextLine();
-            librerias.add(new Libreria(i, libros, process, ship));
+            librerias.add(new Libreria(i, libros, process, ship, scores));
         }
 
         /********CÓDIGO********/
-        for (Libreria lib : librerias) lib.ordenarLibros(scores); //Ordena todas las librerías
+        //for (Libreria lib : librerias) lib.ordenarLibros(scores); //Ordena todas las librerías
 
         HashMap<Integer, Float> ratios = new HashMap<>();
         ArrayList<Float> copiaRatios = new ArrayList<>();
