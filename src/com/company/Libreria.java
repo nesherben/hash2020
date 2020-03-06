@@ -1,5 +1,6 @@
 package com.company;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashSet;
@@ -14,10 +15,11 @@ public class Libreria{
         return libros;
     }
 
-    public Libreria(int ID, HashSet<Integer> libros, int signup, int ship, ArrayList<Integer> scores) {
+    public Libreria(int ID, ArrayList libros, int signup, int ship, ArrayList<Integer> scores) {
         Comparador c = new Comparador();
+        //ArrayList<Integer> libretos = new ArrayList<>(libros.getIDlibro());
         this.ID = ID;
-        this.libros = c.compareTo(libros, scores);
+        this.libros = libros;//c.compareTo(libros,scores);
         this.signup = signup;
         this.ship = ship;
     }

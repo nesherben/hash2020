@@ -7,10 +7,18 @@ import java.util.HashSet;
 
 public class Comparador {
 
-    class Libro {
+    public static class Libro {
 
-        private int IDlibro;
-        private int puntuacion;
+        int IDlibro;
+        int puntuacion;
+
+        public void setIDlibro(int IDlibro) {
+            this.IDlibro = IDlibro;
+        }
+
+        public void setPuntuacion(int puntuacion) {
+            this.puntuacion = puntuacion;
+        }
 
         public Libro(int IDlibro, int puntuacion) {
             this.IDlibro = IDlibro;
@@ -26,7 +34,7 @@ public class Comparador {
         }
     }
 
-    public ArrayList<Integer> compareTo(HashSet<Integer> desordenados, ArrayList<Integer> scores) {
+    public ArrayList<Integer> compareTo(ArrayList<Integer> desordenados, ArrayList<Integer> scores) {
         ArrayList<Libro> orden = new ArrayList<Libro>();
         for (int i = 0; i < scores.size(); i++){
             Libro l = new Libro(i, scores.get(i));
