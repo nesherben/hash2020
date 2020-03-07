@@ -69,10 +69,14 @@ public class Main {
 
 
         }
-        Comparador.Libro miLibro = new Comparador.Libro(0, 0);
+        Comparador.Libro miLibro;
 //aqui acaba la fiesta de ordenacion
 
+
+
+        ArrayList<Integer> auxLibros = new ArrayList<>();
         for (int i = 0; i < l; i++) { //Cargar librerías
+            ArrayList<Integer> copySol = (ArrayList<Integer>) solucionados.clone();
             libros = new ArrayList<>();
             numLibros = sc.nextInt();
             process = sc.nextInt();
@@ -81,10 +85,16 @@ public class Main {
             for (int j = 0; j < numLibros; j++) {
                 libro = sc.nextInt();
                 if (!libros.contains(libro)) {
-                    //miLibro = new Comparador.Libro(solucionados.get(libro),puntaje.get(libro)); //creo un objeto libro con valores justos
-                    libros.add(libro);
-                    
+                    auxLibros.add(libro);
+
+                    solucionados.removeIf(x -> !auxLibros.contains(x));
+
+                    for(int g=0;g<solucionados.size();g++){
+                        libros.add(solucionados.get(g));
+                    }
+                solucionados = (ArrayList<Integer>)copySol.clone();
                 }
+
             }
 
             sc.nextLine();
