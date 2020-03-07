@@ -3,10 +3,22 @@ package com.company;
 
 
 
+
 import java.io.*;
 import java.lang.reflect.Array;
+import java.text.CollationElementIterator;
 import java.util.*;
+import java.util.function.Predicate;
 
+    class SamplePredicate<T> implements Predicate<T> { //para hacer filtritos wapos
+        T varc1;
+        public boolean test(T varc){
+            if(varc1.equals(varc)){
+                return true;
+            }
+            return false;
+        }
+    }
 public class Main {
     static Map<Integer,Integer> libroPuntos = new HashMap<>();
     public static void main(String[] args) throws IOException {
@@ -18,7 +30,7 @@ public class Main {
 
 
         /********ENTRADA DE DATOS********/
-        Scanner sc = new Scanner(new File("inputs/c_incunabula.txt"));
+        Scanner sc = new Scanner(new File("inputs/a_example.txt"));
         b = sc.nextInt(); //Primera línea
         l = sc.nextInt();
         d = sc.nextInt();
@@ -35,16 +47,18 @@ public class Main {
         } //Segunda línea
         sc.nextLine();
 // aqui empieza la fiesta de ordenacion
+/*
         ArrayList<Integer> sortedLibros = new ArrayList(libroPuntos.keySet());
 
         Collections.sort(sortedLibros, Collections.reverseOrder());
-
+*/
         ArrayList<Integer> porValor = new ArrayList(libroPuntos.entrySet());
+        //Collections.sort(porValor,Collections.reverseOrder());
         Collections.sort(porValor, new Comparator() {
             @Override
-            public int compare(Object lib1, Object lib2) {
-                return ((Comparable) ((Map.Entry) (lib1)).getValue())
-                        .compareTo(((Map.Entry) (lib2)).getValue());
+            public int compare(Object lib1, Object lib2) { //aqui se ordenan de mayor a menor
+                return ((Comparable) ((Map.Entry) (lib2)).getValue())
+                        .compareTo(((Map.Entry) (lib1)).getValue());
             }
         });
 
@@ -54,29 +68,31 @@ public class Main {
             sorteados.put(entry.getKey(), entry.getValue());
         }
 
-        ArrayList<Integer> solucionados = new ArrayList<>(sorteados.keySet());
+        ArrayList<Integer> solucionados = new ArrayList<>(sorteados.keySet()); //solucionados tiene el orden de los libros por puntos
         Iterator<Map.Entry<Integer, Integer>> it = sorteados.entrySet().iterator();
-        ArrayList<Integer> puntaje = new ArrayList<>();
+        ArrayList<Integer> puntaje = new ArrayList<>(); //puntaje tiene los puntos por indice de libro.
         while (it.hasNext()) {
             Map.Entry<Integer, Integer> e = it.next();
             puntaje.add(e.getValue());
         }
 
+
         for (int k = 0; k < solucionados.size(); k++) {
             //System.out.println(" libro: "+sorteados.get(k)+ "puntos: "+libroPuntos.get(k));
             System.out.println("puntos : " + puntaje.get(k));
             System.out.println("libro : " + solucionados.get(k));
-
-
+            //para mostrar que de mayor a menor los libros y los puntos estan emparejados
         }
-        Comparador.Libro miLibro;
 //aqui acaba la fiesta de ordenacion
 
 
-
         ArrayList<Integer> auxLibros = new ArrayList<>();
+        HashMap<Integer,Integer> copySol = new HashMap<>();
+        for(int i = 0; i< solucionados.size();i++){
+            copySol.put(i,solucionados.get(i));
+        }
         for (int i = 0; i < l; i++) { //Cargar librerías
-            ArrayList<Integer> copySol = (ArrayList<Integer>) solucionados.clone();
+            auxLibros.clear();
             libros = new ArrayList<>();
             numLibros = sc.nextInt();
             process = sc.nextInt();
@@ -84,18 +100,37 @@ public class Main {
             sc.nextLine();
             for (int j = 0; j < numLibros; j++) {
                 libro = sc.nextInt();
-                if (!libros.contains(libro)) {
+                if (!auxLibros.contains(libro)) {
                     auxLibros.add(libro);
 
-                    solucionados.removeIf(x -> !auxLibros.contains(x));
+                    //System.out.println(solucionados.size());
 
-                    for(int g=0;g<solucionados.size();g++){
-                        libros.add(solucionados.get(g));
-                    }
-                solucionados = (ArrayList<Integer>)copySol.clone();
+
                 }
 
             }
+            SamplePredicate<Integer> filtrado = new SamplePredicate<>();
+
+
+                for(int y=0;y<copySol.size();y++){for(int x=0;x<auxLibros.size();x++){
+                    filtrado.varc1 = auxLibros.get(x);
+                    if (copySol.get(y).equals(filtrado.varc1)) {
+
+                        libros.add(copySol.get(y)); //revisar
+
+                    }
+                }
+            }
+            //solucionados.removeIf(x -> !auxLibros.contains(x));
+/*
+            for(int x = 0; x<solucionados.size();x++){
+                libros.add(solucionados.get(x));
+            }
+            solucionados.clear();
+            for(int k = 0;k< solucionados.size();k++){
+                solucionados.add(copySol.get(k));
+            }
+*/
 
             sc.nextLine();
 
@@ -138,7 +173,7 @@ public class Main {
 
         //cargarte los libros que ya hay en ratios más altos
 
-        ArrayList<Integer> librosUnicos = new ArrayList<>();
+        HashSet<Integer> librosUnicos = new HashSet<>();
         librosUnicos.addAll(librerias.get(IDsOrdenados.get(0)).getLibros());
 
         for(int x = 1; x < l; x++){
