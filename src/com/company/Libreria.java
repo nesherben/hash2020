@@ -15,11 +15,14 @@ public class Libreria{
         return libros;
     }
 
+    public int getSignup() {        return signup;    }
+    public int getShip() {        return ship;    }
+
     public Libreria(int ID, ArrayList libros, int signup, int ship, ArrayList<Integer> scores) {
-        Comparador c = new Comparador();
+
         //ArrayList<Integer> libretos = new ArrayList<>(libros.getIDlibro());
         this.ID = ID;
-        this.libros = libros;//c.compareTo(libros,scores);
+        this.libros = libros;
         this.signup = signup;
         this.ship = ship;
     }

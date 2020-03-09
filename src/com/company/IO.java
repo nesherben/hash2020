@@ -13,10 +13,15 @@ public class IO {
 
         int idActual = 0;
         int numLibros = 0;
+        int libvacias =0;
+        for(int x = 0; x< librerias.size();x++){
+            if(librerias.get(x).getLibros().size() == 0){
+                libvacias++;
+            }
+        }
+        printWriter.println(librerias.size()-libvacias);
 
-        printWriter.println(librerias.size());
-
-        for (int i = 0; i < librerias.size(); i++){
+        for (int i = 0; i < librerias.size()-libvacias; i++){
             idActual = IDordenados.get(i);
             numLibros = librerias.get(idActual).getLibros().size();
             printWriter.println(idActual + " " + numLibros);
