@@ -15,9 +15,6 @@ public class Libreria{
         return libros;
     }
 
-    public int getSignup() {        return signup;    }
-    public int getShip() {        return ship;    }
-
     public Libreria(int ID, ArrayList libros, int signup, int ship, ArrayList<Integer> scores) {
 
         //ArrayList<Integer> libretos = new ArrayList<>(libros.getIDlibro());

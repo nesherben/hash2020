@@ -20,14 +20,14 @@ import java.util.function.Predicate;
         }
     }
 public class Main {
+    static int b = 0, l = 0, d = 0;
     static Map<Integer,Integer> libroPuntos = new HashMap<>();
     public static void main(String[] args) throws IOException {
         IO io = new IO();
-        int b = 0, l = 0, d = 0;
         String problema = "resultado";
         ArrayList<Libreria> librerias = new ArrayList<>();
         ArrayList<Integer> scores = new ArrayList<>();
-
+        ArrayList<Integer> librosquehay=new ArrayList<>();
 
         /********ENTRADA DE DATOS********/
         Scanner sc = new Scanner(new File("inputs/a_example.txt"));
@@ -39,7 +39,6 @@ public class Main {
         int numLibros = 0;
         int process = 0;
         int ship = 0;
-        Comparador c = new Comparador();
         sc.nextLine();
         for (int i = 0; i < b; i++) {
             scores.add(sc.nextInt());
@@ -172,23 +171,23 @@ public class Main {
 
 
         //cargarte los libros que ya hay en ratios más altos
-
-        HashSet<Integer> librosUnicos = new HashSet<>();
-        librosUnicos.addAll(librerias.get(IDsOrdenados.get(0)).getLibros());
+        librosquehay.addAll(librerias.get(IDsOrdenados.get(0)).getLibros());
 
         for(int x = 1; x < l; x++){
             int libroX = IDsOrdenados.get(x);
+            for(int z=0;z<librosquehay.size();z++){
             for(int y = 0; y < librerias.get(libroX).getLibros().size(); y++) {
-                if(librosUnicos.contains(librerias.get(libroX).getLibros().get(y))){
+                System.out.println(librerias.get(libroX).getLibros());
+                if(librosquehay.get(z).equals(librerias.get(libroX).getLibros().get(y))) {
                     librerias.get(libroX).getLibros().remove(y);
-                } else {
-                    librosUnicos.add(librerias.get(libroX).getLibros().get(y));
+
+
                 }
+            }
 
             }
 
         }
-
         //calculas como irá el programa y lo metes en salida
 
         /********SALIDA********/
