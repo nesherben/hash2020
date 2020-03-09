@@ -30,7 +30,7 @@ public class Main {
         ArrayList<Integer> librosquehay=new ArrayList<>();
 
         /********ENTRADA DE DATOS********/
-        Scanner sc = new Scanner(new File("inputs/a_example.txt"));
+        Scanner sc = new Scanner(new File("inputs/c_incunabula.txt"));
         b = sc.nextInt(); //Primera línea
         l = sc.nextInt();
         d = sc.nextInt();
@@ -75,7 +75,7 @@ public class Main {
             puntaje.add(e.getValue());
         }
 
-
+/* //esto solo se usa para comprobar los puntos
         for (int k = 0; k < solucionados.size(); k++) {
             //System.out.println(" libro: "+sorteados.get(k)+ "puntos: "+libroPuntos.get(k));
             System.out.println("puntos : " + puntaje.get(k));
@@ -83,7 +83,7 @@ public class Main {
             //para mostrar que de mayor a menor los libros y los puntos estan emparejados
         }
 //aqui acaba la fiesta de ordenacion
-
+*/
 
         ArrayList<Integer> auxLibros = new ArrayList<>();
         HashMap<Integer,Integer> copySol = new HashMap<>();
@@ -172,12 +172,12 @@ public class Main {
 
         //cargarte los libros que ya hay en ratios más altos
         librosquehay.addAll(librerias.get(IDsOrdenados.get(0)).getLibros());
-
+//ineficiente de cojones pero parece que funciona
         for(int x = 1; x < l; x++){
             int libroX = IDsOrdenados.get(x);
             for(int z=0;z<librosquehay.size();z++){
             for(int y = 0; y < librerias.get(libroX).getLibros().size(); y++) {
-                System.out.println(librerias.get(libroX).getLibros());
+                //System.out.println(librerias.get(libroX).getLibros());
                 if(librosquehay.get(z).equals(librerias.get(libroX).getLibros().get(y))) {
                     librerias.get(libroX).getLibros().remove(y);
 
